@@ -15,3 +15,14 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+
+
+// Inputs
+const email = document.getElementById('email').value;
+const password = document.getElementById('password').value;
+// submit button
+const submit = document.getElementById('submit');
+submit.addEventListener('click',function(event){
+    event.preventDefault()
+    alert('Login Successful')
+})

@@ -1,9 +1,9 @@
-// Import the functions you need from the SDKs you need
+// Import the functions you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } 
+    from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
 
-// Your web app's Firebase configuration
+// Firebase config
 const firebaseConfig = {
     apiKey: "AIzaSyAsWQBoIY5XVgOAoEoG70u1GO7g_j5P7oQ",
     authDomain: "login-page-a5845.firebaseapp.com",
@@ -15,14 +15,24 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
 
-
-// Inputs
-const email = document.getElementById('email').value;
-const password = document.getElementById('password').value;
 // submit button
 const submit = document.getElementById('submit');
-submit.addEventListener('click',function(event){
-    event.preventDefault()
-    alert('Login Successful')
-})
+submit.addEventListener('click', function (event) {
+    event.preventDefault();
+
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+
+    // 🔹 Change this to "signInWithEmailAndPassword" if you want login instead of signup
+    createUserWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+            // user signed up successfully
+            window.location.href = "home.html";   // 👈 Redirect straight away
+        })
+        .catch((error) => {
+            // show error inside a div/span instead of alert
+            document.getElementById('error-message').innerText = error.message;
+        });
+});

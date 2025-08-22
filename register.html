@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register - Karnataka Culture</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-r from-orange-500 via-orange-400 to-yellow-400 min-h-screen flex items-center justify-center">
+  
+  <div class="bg-white bg-opacity-90 backdrop-blur-xl p-8 rounded-2xl shadow-xl w-full max-w-md">
+    <h2 class="text-3xl font-bold text-center text-orange-600 mb-6">Create Account</h2>
+    
+    <!-- ✅ Fixed single form -->
+    <form id="registerForm" class="space-y-4">
+      <input id="name" type="text" placeholder="Full Name" required 
+        class="w-full p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-400">
+
+      <input id="email" type="email" placeholder="Email" required 
+        class="w-full p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-400">
+
+      <input id="password" type="password" placeholder="Password" required 
+        class="w-full p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-400">
+
+      <button id="submit" type="submit" 
+        class="w-full py-3 rounded-xl bg-orange-500 text-white font-semibold hover:bg-orange-600 transition">
+        Register
+      </button>
+    </form>
+
+    <!-- ✅ Error message spot -->
+    <p id="error-message" class="text-center text-red-500 mt-3"></p>
+
+    <p class="text-center text-gray-600 mt-4">
+      Already have an account? 
+      <a href="login.html" class="text-orange-600 font-semibold hover:underline">Login</a>
+    </p>
+  </div>
+
+  <!-- You can either keep localStorage logic here or move to register.js -->
+  <script type="module" src="register.js"></script>
+
+</body>
+</html>

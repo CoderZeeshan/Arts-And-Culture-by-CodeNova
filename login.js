@@ -1,6 +1,6 @@
-// Import the functions you need
+// Import Firebase functions
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } 
+import { getAuth, signInWithEmailAndPassword } 
     from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
 
 // Firebase config
@@ -17,22 +17,22 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
-// submit button
-const submit = document.getElementById('submit');
-submit.addEventListener('click', function (event) {
+// Login form submit
+const loginBtn = document.getElementById('login');
+loginBtn.addEventListener('click', function (event) {
     event.preventDefault();
 
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
 
-    // 🔹 Change this to "signInWithEmailAndPassword" if you want login instead of signup
-    createUserWithEmailAndPassword(auth, email, password)
+    signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
-            // user signed up successfully
-            window.location.href = "home.html";   // 👈 Redirect straight away
+            // ✅ Save login state
+            localStorage.setItem("registered", "true");
+            // ✅ Redirect to home
+            window.location.href = "index.html";
         })
         .catch((error) => {
-            // show error inside a div/span instead of alert
             document.getElementById('error-message').innerText = error.message;
         });
 });

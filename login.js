@@ -18,7 +18,7 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
 // Login form submit
-const loginBtn = document.getElementById('login');
+const loginBtn = document.getElementById('submit');
 loginBtn.addEventListener('click', function (event) {
     event.preventDefault();
 
@@ -30,7 +30,7 @@ loginBtn.addEventListener('click', function (event) {
             // ✅ Save login state
             localStorage.setItem("registered", "true");
             // ✅ Redirect to home
-            window.location.href = "index.html";
+            window.location.href = "home.html";
         })
         .catch((error) => {
             document.getElementById('error-message').innerText = error.message;

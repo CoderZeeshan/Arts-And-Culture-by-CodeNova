@@ -31,7 +31,7 @@ submit.addEventListener('click', function (event) {
             // ✅ Save user login state
             localStorage.setItem("registered", "true");
             // ✅ Redirect to home
-            window.location.href = "index.html";
+            window.location.href = "home.html";
         })
         .catch((error) => {
             document.getElementById('error-message').innerText = error.message;

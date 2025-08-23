@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karnataka Historical Culture - Interactive Menu</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    }
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
+         
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+        }
+
+        /* Headings */
+        .heading-font {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Hero Section */
+        .hero-bg {
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 50%, #ffd700 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Menu Items */
+        .menu-item {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+
+        /* Floating Animation */
+        .floating-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        /* Navigation Radios */
+        .nav-radio {
+            display: none;
+        }
+
+        /* Content Sections */
+        .content-section {
+            display: none;
+        }
+
+        #nav-home:checked~.main-content #home,
+        #nav-timeline:checked~.main-content #timeline,
+        #nav-culture:checked~.main-content #culture,
+        #nav-unesco:checked~.main-content #unesco,
+        #nav-festivals:checked~.main-content #festivals,
+        #nav-profile:checked~.main-content #profile,
+        #nav-contact:checked~.main-content #contact {
+            display: block;
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Navigation Link Styling */
+        .nav-link {
+            color: #374151;
+            transition: color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .nav-link:hover {
+            color: #ea580c;
+        }
+
+        /* Highlight active */
+        #nav-home:checked~.nav-menu label[for="nav-home"],
+        #nav-timeline:checked~.nav-menu label[for="nav-timeline"],
+        #nav-culture:checked~.nav-menu label[for="nav-culture"],
+        #nav-unesco:checked~.nav-menu label[for="nav-unesco"],
+        #nav-festivals:checked~.nav-menu label[for="nav-festivals"],
+        #nav-profile:checked~.nav-menu label[for="nav-profile"],
+        #nav-contact:checked~.nav-menu label[for="nav-contact"] {
+            color: #ea580c;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-toggle {
+            display: none;
+        }
+
+        .mobile-menu {
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            width: 320px;
+            background: white;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            z-index: 1001;
+        }
+
+        .mobile-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu-toggle:checked~.mobile-menu {
+            transform: translateX(0);
+        }
+
+        .mobile-menu-toggle:checked~.mobile-overlay {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Hamburger Animation */
+        .hamburger {
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background: #374151;
+            margin: 5px 0;
+            transition: 0.3s;
+        }
+
+        .mobile-menu-toggle:checked~.nav-menu .hamburger span:nth-child(1) {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+
+        .mobile-menu-toggle:checked~.nav-menu .hamburger span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-toggle:checked~.nav-menu .hamburger span:nth-child(3) {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+
+        /* Profile Popup */
+        .profile-popup {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 350px;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(12px);
+            box-shadow: -5px 0 20px rgba(0, 0, 0, 0.3);
+            border-top-left-radius: 20px;
+            border-bottom-left-radius: 20px;
+            padding: 30px;
+            transition: 0.4s ease;
+            z-index: 2000;
+            color: #fff;
+        }
+
+        .profile-popup.active {
+            right: 0;
+        }
+
+        .profile-popup .close-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 24px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .profile-header {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .profile-header img {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            border: 3px solid #fff;
+            margin-bottom: 10px;
+        }
+
+        .profile-header h2 {
+            margin: 5px 0;
+        }
+
+        .profile-header p {
+            font-size: 14px;
+            color: #ddd;
+        }
+
+        .profile-details {
+            margin-top: 20px;
+        }
+
+        .profile-details p {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+
+        /* Responsive */
+        @media(max-width:768px) {
+            .desktop-menu {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+        }
+
+        @media(min-width:769px) {
+            .mobile-menu-btn {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-gradient-to-br from-amber-50 via-orange-50 to-red-50">
+
+    <!-- Navigation Radios -->
+    <input type="radio" name="navigation" id="nav-home" class="nav-radio" checked>
+    <input type="radio" name="navigation" id="nav-timeline" class="nav-radio">
+    <input type="radio" name="navigation" id="nav-culture" class="nav-radio">
+    <input type="radio" name="navigation" id="nav-unesco" class="nav-radio">
+    <input type="radio" name="navigation" id="nav-festivals" class="nav-radio">
+    <input type="radio" name="navigation" id="nav-profile" class="nav-radio">
+    <input type="radio" name="navigation" id="nav-contact" class="nav-radio">
+
+    <!-- Mobile Menu Toggle -->
+    <input type="checkbox" id="mobile-menu-toggle" class="mobile-menu-toggle">
+
+    <!-- Navigation Menu -->
+    <nav class="nav-menu bg-white/90 backdrop-blur-sm fixed w-full z-50">
+        <div class="container mx-auto px-6">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <div
+                        class="w-10 h-10 bg-gradient-to-r from-orange-500 to-red-500 rounded-lg flex items-center justify-center">
+                        <span class="text-white font-bold text-lg">K</span>
+                    </div>
+                    <span class="ml-3 heading-font text-xl font-bold text-gray-900">Karnataka Heritage</span>
+                </div>
+                <!-- Desktop Menu -->
+                <div class="desktop-menu hidden md:flex space-x-8">
+                    <label for="nav-home" class="nav-link px-3 py-2 font-medium">Home</label>
+                    <label for="nav-timeline" class="nav-link px-3 py-2 font-medium">Timeline</label>
+                    <label for="nav-culture" class="nav-link px-3 py-2 font-medium">Culture</label>
+                    <label for="nav-unesco" class="nav-link px-3 py-2 font-medium">UNESCO Sites</label>
+                    <label for="nav-festivals" class="nav-link px-3 py-2 font-medium">Festivals</label>
+                    <button id="profileBtn" class="nav-link px-3 py-2 font-medium">Profile</button>
+                    <label for="nav-contact" class="nav-link px-3 py-2 font-medium">Contact</label>
+                </div>
+                <!-- Mobile Hamburger -->
+                <div class="mobile-menu-btn md:hidden">
+                    <label for="mobile-menu-toggle" class="hamburger"><span></span><span></span><span></span></label>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+        <div class="p-6">
+            <div class="flex justify-between items-center mb-8">
+                <div class="flex items-center">
+                    <div
+                        class="w-8 h-8 bg-gradient-to-r from-orange-500 to-red-500 rounded-lg flex items-center justify-center">
+                        <span class="text-white font-bold">K</span>
+                    </div>
+                    <span class="ml-2 heading-font text-lg font-bold text-gray-900">Karnataka Heritage</span>
+                </div>
+                <label for="mobile-menu-toggle" class="text-gray-500 hover:text-gray-700 cursor-pointer">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                        </path>
+                    </svg>
+                </label>
+            </div>
+            <div class="space-y-4">
+                <label for="nav-home"
+                    class="block w-full text-left text-gray-700 hover:text-orange-600 py-3 text-lg font-medium border-b border-gray-100 cursor-pointer">Home</label>
+                <label for="nav-timeline"
+                    class="block w-full text-left text-gray-700 hover:text-orange-600 py-3 text-lg font-medium border-b border-gray-100 cursor-pointer">Timeline</label>
+                <label for="nav-culture"
+                    class="block w-full text-left text-gray-700 hover:text-orange-600 py-3 text-lg font-medium border-b border-gray-100 cursor-pointer">Culture</label>
+                <label for="nav-unesco"
+                    class="block w-full text-left text-gray-700 hover:text-orange-600 py-3 text-lg font-medium border-b border-gray-100 cursor-pointer">UNESCO
+                    Sites</label>
+                <label for="nav-festivals"
+                    class="block w-full text-left text-gray-700 hover:text-orange-600 py-3 text-lg font-medium border-b border-gray-100 cursor-pointer">Festivals</label>
+                <label for="nav-profile"
+                    class="block w-full text-left text-gray-700 hover:text-orange-600 py-3 text-lg font-medium border-b border-gray-100 cursor-pointer">Profile</label>
+                <label for="nav-contact"
+                    class="block w-full text-left text-gray-700 hover:text-orange-600 py-3 text-lg font-medium border-b border-gray-100 cursor-pointer">Contact</label>
+            </div>
+        </div>
+    </div>
+    <div class="mobile-overlay"></div>
+
+    <!-- Main Content -->
+    <div class="main-content pt-16">
+        <!-- Home Section -->
+        <section id="home" class="content-section">
+            <div class="hero-bg min-h-screen flex items-center justify-center relative">
+                <div class="container mx-auto px-6 text-center relative z-10">
+                    <h1 class="heading-font text-5xl md:text-7xl font-bold text-white mb-6">Karnataka's <span
+                            class="block text-yellow-200">Arts & Culture</span></h1>
+                    <p class="text-xl md:text-2xl text-orange-100 mb-8 max-w-3xl mx-auto leading-relaxed">
+                        Journey through millennia of rich heritage, from ancient dynasties to timeless traditions
+                    </p>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12">
+                        <label for="nav-timeline"
+                            class="menu-item bg-white/10 backdrop-blur-sm rounded-2xl p-6 text-center cursor-pointer">
+                            <div class="text-4xl mb-3">🏛</div>
+                            <h3 class="text-white font-semibold">Historical Timeline</h3>
+                            <p class="text-orange-200 text-sm mt-2">Ancient Dynasties</p>
+                        </label>
+                        <label for="nav-culture"
+                            class="menu-item bg-white/10 backdrop-blur-sm rounded-2xl p-6 text-center cursor-pointer">
+                            <div class="text-4xl mb-3">🎭</div>
+                            <h3 class="text-white font-semibold">Cultural Heritage</h3>
+                            <p class="text-orange-200 text-sm mt-2">Arts & Traditions</p>
+                        </label>
+                        <label for="nav-unesco"
+                            class="menu-item bg-white/10 backdrop-blur-sm rounded-2xl p-6 text-center cursor-pointer">
+                            <div class="text-4xl mb-3">🌍</div>
+                            <h3 class="text-white font-semibold">UNESCO Sites</h3>
+                            <p class="text-orange-200 text-sm mt-2">World Heritage</p>
+                        </label>
+                        <label for="nav-festivals"
+                            class="menu-item bg-white/10 backdrop-blur-sm rounded-2xl p-6 text-center cursor-pointer">
+                            <div class="text-4xl mb-3">🎪</div>
+                            <h3 class="text-white font-semibold">Festivals</h3>
+                            <p class="text-orange-200 text-sm mt-2">Celebrations</p>
+                        </label>
+                    </div>
+                </div>
+                <div class="absolute top-20 left-10 floating-animation">
+                    <div class="w-16 h-16 bg-yellow-300 rounded-full opacity-20"></div>
+                </div>
+                <div class="absolute bottom-32 right-16 floating-animation" style="animation-delay:-2s;">
+                    <div class="w-12 h-12 bg-orange-300 rounded-full opacity-30"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Timeline Section -->
+        <section id="timeline" class="content-section py-20 bg-gradient-to-b from-white to-amber-50">
+            <div class="container mx-auto px-6">
+                <h2 class="heading-font text-4xl md:text-5xl font-bold text-gray-800 mb-6 text-center">Historical
+                    Timeline</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto text-center mb-12">Trace Karnataka's magnificent
+                    journey through the ages</p>
+                <!-- Example Dynasty -->
+                <div class="max-w-4xl mx-auto space-y-12">
+                    <div class="bg-white rounded-2xl p-8 shadow-xl menu-item">
+                        <div class="flex flex-col md:flex-row items-start gap-6">
+                            <div class="w-full md:w-1/3">
+                                <div
+                                    class="bg-gradient-to-r from-purple-500 to-indigo-600 text-white px-4 py-2 rounded-full text-sm font-semibold inline-block mb-3">
+                                    543-1200 CE</div>
+                                <h3 class="heading-font text-2xl font-bold text-gray-800 mb-2">Chalukya Dynasty</h3>
+                            </div>
+                            <div class="w-full md:w-2/3">
+                                <p class="text-gray-600 leading-relaxed mb-4">
+                                    Pioneers of Dravidian architecture, built temples at Badami, Aihole, and Pattadakal.
+                                </p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">Cave
+                                        Temples</span>
+                                    <span
+                                        class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">Badami</span>
+                                    <span
+                                        class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">Pattadakal</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </section>
+
+        <!-- Profile Popup -->
+      // ...existing code...
+<div id="profilePopup" class="profile-popup">
+    <span id="closeProfile" class="close-btn">&times;</span>
+    <div class="profile-header">
+        <p class="mb-2 text-lg font-semibold" color="black">Profile</p>
+        <img class=" imagecentre"src="c:\Users\dorea\Pictures\profile.pngq" style="margin-left: 100px;"> <!-- Profile pic above name -->
+        <h2>CodeNova</h2>
+        <p>@CodeNova</p>
+    </div>
+    <div class="profile-details">
+        <button class="bg-orange-500 text-white px-10 py-2 rounded-full mt-15 mb-2 hover:bg-orange-600 transition">posts</button>
+        <button class="bg-orange-500 text-white px-10 py-2 rounded-full mt-15 mb-2 hover:bg-orange-600 transition">Setting</button>
+        <a href="register.html" class="bg-orange-500 text-white px-10 py-2 rounded-full mt-15 mb-2 hover:bg-orange-600 transition">Log Out</a>
+        <p>📧 CodeNova@nexample.com</p>
+        <p>📱 +91 9876543210</p>
+        <p>🎓 BTech AI & ML - UVCE</p>
+        <p>⚡ AI & Video Editing Enthusiast</p>
+    </div>
+</div>
+// ...existing code...
+
+        <script>
+            // Profile Popup Toggle
+            const profileBtn = document.getElementById("profileBtn");
+            const profilePopup = document.getElementById("profilePopup");
+            const closeProfile = document.getElementById("closeProfile");
+
+            profileBtn.addEventListener("click", () => { profilePopup.classList.add("active"); });
+            closeProfile.addEventListener("click", () => { profilePopup.classList.remove("active"); });
+            window.addEventListener("click", (e) => { if (e.target === profilePopup) profilePopup.classList.remove("active"); });
+        </script>
+
+</body>
+
+</html>

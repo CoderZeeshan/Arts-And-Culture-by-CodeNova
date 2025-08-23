@@ -5,13 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login - Karnataka Culture</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;500&display=swap');
+
+    .font-playfair { font-family: 'Playfair Display', serif; }
+    .font-inter { font-family: 'Inter', sans-serif; }
+    .font-playfair{ background: linear-gradient(90deg, #ffd51b, #ffffff);
+    -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;}
+  </style>
 </head>
-<body class="bg-gradient-to-r from-orange-500 via-orange-400 to-yellow-400 min-h-screen flex items-center justify-center">
-  
+<body class="bg-gradient-to-r from-orange-500 via-orange-400 to-yellow-400 min-h-screen flex flex-col items-center justify-center">
+
+  <!-- Elegant Heading -->
+  <h1 class="font-playfair text-4xl md:text-5xl font-bold text-white text-center mb-8 drop-shadow-lg">
+    WELCOME TO KARNATAKA HERITAGE
+  </h1>
+
+  <!-- Login Form Container -->
   <div class="bg-white bg-opacity-90 backdrop-blur-xl p-8 rounded-2xl shadow-xl w-full max-w-md">
     <h2 class="text-3xl font-bold text-center text-orange-600 mb-6">Log In Account</h2>
     
-    <!-- ✅ Fixed single form -->
     <form id="loginForm" class="space-y-4">
       <input id="name" type="text" placeholder="Full Name" required 
         class="w-full p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-400">
@@ -28,17 +42,14 @@
       </button>
     </form>
 
-    <!-- ✅ Error message spot -->
     <p id="error-message" class="text-center text-red-500 mt-3"></p>
 
-   <p class="text-center text-gray-600 mt-4">
-  Don’t have an account? 
-  <a href="register.html" class="text-orange-600 font-semibold hover:underline">Register</a>
-</p>
-
+    <p class="text-center text-gray-600 mt-4">
+      Don’t have an account? 
+      <a href="index.html" class="text-orange-600 font-semibold hover:underline">Register</a>
+    </p>
   </div>
 
-  <!-- You can either keep localStorage logic here or move to register.js -->
   <script type="module" src="login.js"></script>
 
 </body>

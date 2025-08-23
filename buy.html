@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Choose Art</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  /* Modal styling */
+  .modal {
+    display: none; 
+    position: fixed; 
+    z-index: 50; 
+    left: 0; top: 0;
+    width: 100%; height: 100%; 
+    background: rgba(0,0,0,0.5); 
+    align-items: center; 
+    justify-content: center;
+  }
+  .modal-content {
+    background: white; 
+    padding: 2rem; 
+    border-radius: 1rem; 
+    width: 90%; max-width: 500px; 
+    text-align: center; 
+    animation: fadeIn 0.5s ease forwards;
+  }
+  .fade-in {
+    animation: fadeIn 0.5s ease forwards;
+  }
+  @keyframes fadeIn {
+    from {opacity: 0; transform: translateY(30px);}
+    to {opacity: 1; transform: translateY(0);}
+  }
+  .disabled-btn {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+</style>
+</head>
+<body class="bg-gray-50 font-sans">
+
+<!-- Nav -->
+ 
+<nav class="bg-white shadow-md py-4 sticky top-0 z-40">
+  <div class="max-w-6xl mx-auto flex justify-between px-6">
+    <h1 class="font-bold text-2xl text-orange-600">Karnataka Heritage</h1>
+    <div class="space-x-6">
+      <a href="home.html" class="text-gray-600 hover:text-purple-600">Home</a>
+      <a href="market.html" class="text-gray-600 hover:text-purple-600">Sell</a>
+      <a href="contact.html" class="text-gray-600 hover:text-purple-600">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<!-- Search -->
+<div class="max-w-4xl mx-auto text-center my-10">
+  <input type="text" placeholder="Search Art..." class="p-3 w-full md:w-1/2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500">
+</div>
+
+<!-- India Foreign Trade Policy -->
+<div class="max-w-4xl mx-auto text-center mb-10">
+  <h6 class="text-gray-700">India Foreign Trade Policy applies for all purchases.</h6>
+</div>
+
+<!-- Art Grid -->
+<div class="max-w-6xl mx-auto px-6 grid md:grid-cols-3 gap-6">
+  <div class="bg-white rounded-xl shadow-md p-4 fade-in">
+    <img src="https://via.placeholder.com/300x200.png?text=Art+1" class="rounded-lg mb-4 w-full h-48 object-cover">
+    <h3 class="font-semibold text-lg mb-2">Sunset Dreams</h3>
+    <p class="text-gray-600 text-sm mb-2">Artist: Elena Rodriguez</p>
+    <p class="text-gray-800 font-semibold mb-4">Price: ₹15,000</p>
+    <button onclick="openModal('Sunset Dreams')" class="w-full bg-purple-600 text-white py-2 rounded-lg hover:bg-purple-700 transition-colors">Purchase</button>
+  </div>
+
+  <div class="bg-white rounded-xl shadow-md p-4 fade-in">
+    <img src="https://via.placeholder.com/300x200.png?text=Art+2" class="rounded-lg mb-4 w-full h-48 object-cover">
+    <h3 class="font-semibold text-lg mb-2">Morning Bliss</h3>
+    <p class="text-gray-600 text-sm mb-2">Artist: Rajesh Kumar</p>
+    <p class="text-gray-800 font-semibold mb-4">Price: ₹22,000</p>
+    <button onclick="openModal('Morning Bliss')" class="w-full bg-purple-600 text-white py-2 rounded-lg hover:bg-purple-700 transition-colors">Purchase</button>
+  </div>
+
+  <div class="bg-white rounded-xl shadow-md p-4 fade-in">
+    <img src="https://via.placeholder.com/300x200.png?text=Art+3" class="rounded-lg mb-4 w-full h-48 object-cover">
+    <h3 class="font-semibold text-lg mb-2">Ocean Whisper</h3>
+    <p class="text-gray-600 text-sm mb-2">Artist: Sneha Mehta</p>
+    <p class="text-gray-800 font-semibold mb-4">Price: ₹18,500</p>
+    <button onclick="openModal('Ocean Whisper')" class="w-full bg-purple-600 text-white py-2 rounded-lg hover:bg-purple-700 transition-colors">Purchase</button>
+  </div>
+</div>
+
+<!-- Modal -->
+<div id="purchaseModal" class="modal">
+  <div class="modal-content">
+    <h2 id="modalArtTitle" class="text-2xl font-bold mb-4">Art Title</h2>
+    <h6 class="text-gray-600 text-sm mb-6">India Foreign Trade Policy applies for this purchase.</h6>
+    <label class="inline-flex items-center mb-6">
+      <input type="checkbox" id="agreeCheckbox" class="mr-2">
+      I agree to India Foreign Trade Policy
+    </label>
+    <button id="buyBtn" class="w-full bg-green-600 text-white py-3 rounded-lg disabled-btn mb-3" onclick="confirmPurchase()">Buy Now</button>
+    <button onclick="closeModal()" class="w-full bg-gray-300 text-gray-800 py-2 rounded-lg">Cancel</button>
+  </div>
+</div>
+
+<script>
+const modal = document.getElementById('purchaseModal');
+const modalTitle = document.getElementById('modalArtTitle');
+const checkbox = document.getElementById('agreeCheckbox');
+const buyBtn = document.getElementById('buyBtn');
+
+function openModal(artTitle) {
+  modal.style.display = 'flex';
+  modalTitle.textContent = artTitle;
+  checkbox.checked = false;
+  buyBtn.classList.add('disabled-btn');
+}
+
+function closeModal() {
+  modal.style.display = 'none';
+}
+
+checkbox.addEventListener('change', () => {
+  if(checkbox.checked) {
+    buyBtn.classList.remove('disabled-btn');
+  } else {
+    buyBtn.classList.add('disabled-btn');
+  }
+});
+
+function confirmPurchase() {
+  window.location.href = 'orderplaced.html';
+}
+</script>
+
+</body>
+</html>

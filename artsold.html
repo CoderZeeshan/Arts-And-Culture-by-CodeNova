@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Art Sold - CodeNav</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  body { font-family: 'Inter', sans-serif; }
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s ease forwards;
+  }
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
+</head>
+<body class="bg-green-50 flex items-center justify-center min-h-screen">
+
+<div class="text-center fade-in">
+  <h1 class="text-4xl md:text-5xl font-bold text-green-700 uppercase mb-6">YOUR ART IS SOLD</h1>
+  <p class="text-green-800 text-lg mb-10">Thank you for sharing your creativity with the world!</p>
+  <button onclick="window.location.href='home.html'" 
+          class="bg-green-700 text-white px-8 py-3 rounded-full font-semibold hover:bg-green-800 transition-colors">
+    Back to Home
+  </button>
+</div>
+
+</body>
+</html>

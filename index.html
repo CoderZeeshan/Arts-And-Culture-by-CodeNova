@@ -3,43 +3,67 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Register - Karnataka Culture</title>
+  <title>Register - Karnataka Heritage</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Elegant font -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    .font-playfair { font-family: 'Playfair Display', serif; }
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 1s ease forwards;
+    }
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .gradient-text {
+      background: linear-gradient(90deg, #ffbb00, #ffffff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  </style>
 </head>
-<body class="bg-gradient-to-r from-orange-500 via-orange-400 to-yellow-400 min-h-screen flex items-center justify-center">
-  
-  <div class="bg-white bg-opacity-90 backdrop-blur-xl p-8 rounded-2xl shadow-xl w-full max-w-md">
+<body class="bg-gradient-to-r from-orange-600 via-orange-400 to-yellow-300 min-h-screen flex flex-col items-center justify-center">
+
+  <!-- Welcome Section -->
+  <div class="text-center mb-10 fade-in">
+    <h1 class="font-playfair gradient-text text-6xl md:text-6xl font-extrabold mb-4 drop-shadow-lg">
+      WELCOME TO KARNATAKA HERITAGE
+    </h1>
+    <p class="text-white/90 italic text-lg md:text-xl max-w-xl mx-auto">
+      Discover the beauty, culture, and timeless traditions of Karnataka, brought to life in every creation.
+    </p>
+  </div>
+
+  <!-- Register Form Section -->
+  <div class="bg-white bg-opacity-90 backdrop-blur-xl p-8 rounded-2xl shadow-xl w-full max-w-md fade-in">
     <h2 class="text-3xl font-bold text-center text-orange-600 mb-6">Create Account</h2>
     
-    <!-- ✅ Fixed single form -->
     <form id="registerForm" class="space-y-4">
       <input id="name" type="text" placeholder="Full Name" required 
         class="w-full p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-400">
-
       <input id="email" type="email" placeholder="Email" required 
         class="w-full p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-400">
-
       <input id="password" type="password" placeholder="Password" required 
         class="w-full p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-400">
-
       <button id="submit" type="submit" 
         class="w-full py-3 rounded-xl bg-orange-500 text-white font-semibold hover:bg-orange-600 transition">
         Register
       </button>
     </form>
 
-    <!-- ✅ Error message spot -->
     <p id="error-message" class="text-center text-red-500 mt-3"></p>
 
     <p class="text-center text-gray-600 mt-4">
-  Already have an account? 
-  <a href="login.html" class="text-orange-600 font-semibold hover:underline">Login</a>
-</p>
-
+      Already have an account? 
+      <a href="login.html" class="text-orange-600 font-semibold hover:underline">Login</a>
+    </p>
   </div>
 
-  <!-- You can either keep localStorage logic here or move to register.js -->
   <script type="module" src="register.js"></script>
-
 </body>
 </html>

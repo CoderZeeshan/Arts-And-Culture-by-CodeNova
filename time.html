@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karnataka Heritage - Historical Timeline</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+        }
+
+        .heading-font {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .hero-bg {
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 50%, #ffd700 100%);
+        }
+
+        .timeline-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .timeline-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+
+<body class="bg-amber-50">
+
+    <!-- Navigation -->
+    <nav class="bg-white/90 backdrop-blur-sm fixed w-full z-50 shadow-md">
+        <div class="container mx-auto px-6">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <div
+                        class="w-10 h-10 bg-gradient-to-r from-orange-500 to-red-500 rounded-lg flex items-center justify-center">
+                        <span class="text-white font-bold text-lg">K</span>
+                    </div>
+                    <span class="ml-3 heading-font text-xl font-bold text-gray-900">Karnataka Heritage</span>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-6">
+                    <a href="home.html" class="nav-link font-medium hover:text-orange-600">Home</a>
+                    <a href="#timeline" class="nav-link font-medium hover:text-orange-600">Timeline</a>
+                    <a href="contact.html" class="nav-link font-medium hover:text-orange-600">Contact</a>
+                </div>
+
+                <!-- Mobile Hamburger -->
+                <div class="md:hidden flex items-center">
+                    <input type="checkbox" id="mobile-menu-toggle" class="hidden">
+                    <label for="mobile-menu-toggle" class="cursor-pointer flex flex-col space-y-1">
+                        <span class="w-6 h-0.5 bg-gray-700"></span>
+                        <span class="w-6 h-0.5 bg-gray-700"></span>
+                        <span class="w-6 h-0.5 bg-gray-700"></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="fixed inset-0 z-40 transform -translate-x-full transition-transform duration-300 bg-white md:hidden"
+        id="mobileMenu">
+        <div class="p-6">
+            <a href="index.html" class="block py-3 font-medium border-b border-gray-200">Home</a>
+            <a href="#timeline" class="block py-3 font-medium border-b border-gray-200">Timeline</a>
+            <a href="contact.html" class="block py-3 font-medium border-b border-gray-200">Contact</a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero-bg min-h-screen flex items-center justify-center text-center text-white px-6">
+        <div>
+            <h1 class="heading-font text-5xl md:text-6xl font-bold mb-4">Karnataka Historical Timeline</h1>
+            <p class="text-xl md:text-2xl max-w-3xl mx-auto">Explore the rich dynasties, temples, and milestones that shaped Karnataka over centuries.</p>
+        </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section id="timeline" class="py-20 container mx-auto px-6">
+        <h2 class="heading-font text-4xl md:text-5xl font-bold text-center mb-12">Historical Timeline</h2>
+
+        <div class="grid md:grid-cols-2 gap-10">
+            <!-- Timeline Card Example -->
+            <div class="timeline-card bg-white rounded-2xl p-6 shadow-md">
+                <h3 class="heading-font text-2xl font-semibold mb-2">Mauryan Influence (3rd Century BCE)</h3>
+                <p class="text-gray-700">The Mauryan Empire extended its influence into parts of Karnataka, introducing early administrative systems and Buddhist culture.</p>
+            </div>
+
+            <div class="timeline-card bg-white rounded-2xl p-6 shadow-md">
+                <h3 class="heading-font text-2xl font-semibold mb-2">Satavahanas & Early Dynasties (2nd Century BCE - 3rd Century CE)</h3>
+                <p class="text-gray-700">The Satavahanas ruled over northern Karnataka, promoting trade, art, and early temple architecture.</p>
+            </div>
+
+            <div class="timeline-card bg-white rounded-2xl p-6 shadow-md">
+                <h3 class="heading-font text-2xl font-semibold mb-2">Kadamba Dynasty (4th - 6th Century CE)</h3>
+                <p class="text-gray-700">Kadambas established the first native kingdom in Karnataka, with their capital at Banavasi, fostering early Kannada culture.</p>
+            </div>
+
+            <div class="timeline-card bg-white rounded-2xl p-6 shadow-md">
+                <h3 class="heading-font text-2xl font-semibold mb-2">Chalukya Dynasty (6th - 12th Century CE)</h3>
+                <p class="text-gray-700">Known for their architectural marvels like Badami caves, Pattadakal monuments, and for flourishing trade and literature.</p>
+            </div>
+
+            <div class="timeline-card bg-white rounded-2xl p-6 shadow-md">
+                <h3 class="heading-font text-2xl font-semibold mb-2">Rashtrakutas (8th - 10th Century CE)</h3>
+                <p class="text-gray-700">Famous for the Kailasanatha temple at Ellora and for patronizing art, literature, and Kannada poetry.</p>
+            </div>
+
+            <div class="timeline-card bg-white rounded-2xl p-6 shadow-md">
+                <h3 class="heading-font text-2xl font-semibold mb-2">Western Chalukyas (10th - 12th Century CE)</h3>
+                <p class="text-gray-700">Developed distinctive temple architecture in places like Lakkundi and Gadag, and promoted Kannada literature.</p>
+            </div>
+
+            <div class="timeline-card bg-white rounded-2xl p-6 shadow-md">
+                <h3 class="heading-font text-2xl font-semibold mb-2">Hoysala Empire (11th - 14th Century CE)</h3>
+                <p class="text-gray-700">Known for exquisite temples like Belur and Halebidu, marking the peak of Karnataka's temple architecture and art.</p>
+            </div>
+
+            <div class="timeline-card bg-white rounded-2xl p-6 shadow-md">
+                <h3 class="heading-font text-2xl font-semibold mb-2">Vijayanagara Empire (14th - 17th Century CE)</h3>
+                <p class="text-gray-700">One of the greatest South Indian kingdoms, leaving behind the UNESCO World Heritage site of Hampi and flourishing trade and culture.</p>
+            </div>
+
+            <div class="timeline-card bg-white rounded-2xl p-6 shadow-md">
+                <h3 class="heading-font text-2xl font-semibold mb-2">Mysore Kingdom (17th - 20th Century CE)</h3>
+                <p class="text-gray-700">Rulers like Tipu Sultan and Wodeyars promoted arts, culture, and administration. Mysore Palace became a symbol of grandeur.</p>
+            </div>
+
+            <div class="timeline-card bg-white rounded-2xl p-6 shadow-md">
+                <h3 class="heading-font text-2xl font-semibold mb-2">Modern Karnataka (20th Century - Present)</h3>
+                <p class="text-gray-700">Formation of the state of Karnataka in 1956, continued growth of technology, education, and cultural preservation.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-10 mt-20">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="heading-font text-2xl font-bold mb-4">Karnataka Heritage</h2>
+            <p class="text-gray-400 mb-4">Preserving the rich history, culture, and legacy of Karnataka.</p>
+            <p class="text-gray-500 text-sm">&copy; 2025 Karnataka Heritage. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu toggle
+        const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        mobileMenuToggle.addEventListener('change', () => {
+            if (mobileMenuToggle.checked) {
+                mobileMenu.classList.remove('-translate-x-full');
+                mobileMenu.classList.add('translate-x-0');
+            } else {
+                mobileMenu.classList.add('-translate-x-full');
+                mobileMenu.classList.remove('translate-x-0');
+            }
+        });
+    </script>
+
+</body>
+
+</html>

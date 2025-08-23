@@ -288,11 +288,10 @@
                     <label for="nav-home" class="nav-link px-3 py-2 font-medium">Home</label>
                     <label for="nav-timeline" class="nav-link px-3 py-2 font-medium">Timeline</label>
                     <label for="nav-culture" class="nav-link px-3 py-2 font-medium">Culture</label>
-                    <label for="nav-unesco" class="nav-link px-3 py-2 font-medium">UNESCO Sites</label>
-                    <label for="nav-festivals" class="nav-link px-3 py-2 font-medium">Festivals</label>
+                    <a href="unisco.html" class="nav-link px-3 py-2 font-medium">UNESCO Sites</label>
+                    <a href="festival.html" class="nav-link px-3 py-2 font-medium">Festivals</a>
                     <button id="profileBtn" class="nav-link px-3 py-2 font-medium">Profile</button>
-                    <label for="nav-contact" class="nav-link px-3 py-2 font-medium">Contact</label>
-                </div>
+                    <a href="contact.html" class="nav-link px-3 py-2 font-medium">Contact</a>                </div>
                 <!-- Mobile Hamburger -->
                 <div class="mobile-menu-btn md:hidden">
                     <label for="mobile-menu-toggle" class="hamburger"><span></span><span></span><span></span></label>
@@ -433,9 +432,23 @@
         <p>@CodeNova</p>
     </div>
     <div class="profile-details">
-        <button class="bg-orange-500 text-white px-10 py-2 rounded-full mt-15 mb-2 hover:bg-orange-600 transition">posts</button>
-        <button class="bg-orange-500 text-white px-10 py-2 rounded-full mt-15 mb-2 hover:bg-orange-600 transition">Setting</button>
-        <a href="register.html" class="bg-orange-500 text-white px-10 py-2 rounded-full mt-15 mb-2 hover:bg-orange-600 transition">Log Out</a>
+        <div class="flex flex-col items-center mt-4 space-y-3">
+  <a href="profile.html" 
+     class="bg-orange-500 text-white px-10 py-2 rounded-full hover:bg-orange-600 transition text-center w-full max-w-xs">
+    Works
+  </a>
+
+  <a href="settings.html" 
+     class="bg-orange-500 text-white px-10 py-2 rounded-full hover:bg-orange-600 transition text-center w-full max-w-xs">
+    Settings
+  </a>
+
+  <a href="register.html" 
+     class="bg-orange-500 text-white px-10 py-2 rounded-full hover:bg-orange-600 transition text-center w-full max-w-xs">
+    Log Out
+  </a>
+</div>
+
         <p>📧 CodeNova@nexample.com</p>
         <p>📱 +91 9876543210</p>
         <p>🎓 BTech AI & ML - UVCE</p>

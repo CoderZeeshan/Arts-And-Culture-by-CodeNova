@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karnataka - Land of Festivals & Culture</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+        
+        * {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .fade-in {
+            animation: fadeIn 1s ease-in-out;
+        }
+        
+        .slide-up {
+            animation: slideUp 0.8s ease-out;
+        }
+        
+        .float {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .pulse-glow {
+            animation: pulseGlow 2s ease-in-out infinite;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideUp {
+            from { 
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        @keyframes pulseGlow {
+            0%, 100% { 
+                box-shadow: 0 0 20px rgba(255, 193, 7, 0.3);
+                transform: scale(1);
+            }
+            50% { 
+                box-shadow: 0 0 30px rgba(255, 193, 7, 0.6);
+                transform: scale(1.05);
+            }
+        }
+        
+        .festival-card {
+            transition: all 0.3s ease;
+        }
+        
+        .festival-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .culture-item {
+            transition: all 0.3s ease;
+        }
+        
+        .culture-item:hover {
+            transform: scale(1.05);
+        }
+        
+        .nav-link {
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            color: #fbbf24;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-orange-50 to-red-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg sticky top-0 z-50 fade-in">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <span class="text-2xl font-bold text-orange-600">🕉 Karnataka</span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="home.html" class="nav-link text-gray-700 hover:text-orange-600 px-3 py-2 font-medium">Home</a>
+                        <a href="#festivals" class="nav-link text-gray-700 hover:text-orange-600 px-3 py-2 font-medium">Festivals</a>
+                        <a href="#culture" class="nav-link text-gray-700 hover:text-orange-600 px-3 py-2 font-medium">Culture</a>
+                        <a href="#more-festivals" class="nav-link text-gray-700 hover:text-orange-600 px-3 py-2 font-medium">More Festivals</a>
+                        <a href="contact.html" class="nav-link text-gray-700 hover:text-orange-600 px-3 py-2 font-medium">Contact</a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center bg-gradient-to-r from-orange-400 via-red-400 to-pink-400">
+        <div class="text-center text-white px-4">
+            <h1 class="text-6xl md:text-8xl font-bold mb-6 fade-in">Karnataka Festivals</h1>
+            <p class="text-xl md:text-2xl mb-8 slide-up">Land of Rich Heritage & Vibrant Festivals</p>
+            <div class="float">
+                <div class="text-8xl mb-6">🎭</div>
+            </div>
+            <button onclick="scrollToSection('festivals')" class="pulse-glow bg-yellow-400 text-gray-800 px-8 py-4 rounded-full text-lg font-semibold hover:bg-yellow-300 transition-all duration-300">
+                Explore Our Culture
+            </button>
+        </div>
+    </section>
+
+    <!-- Festivals Section -->
+    <section id="festivals" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4 slide-up">Major Festivals</h2>
+                <p class="text-xl text-gray-600 slide-up">Celebrating the spirit of Karnataka through colorful traditions</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Dasara Festival -->
+                <div class="festival-card bg-gradient-to-br from-purple-100 to-pink-100 rounded-xl p-6 shadow-lg">
+                    <div class="text-6xl mb-4 text-center">👑</div>
+                    <h3 class="text-2xl font-bold text-purple-800 mb-3">Mysore Dasara</h3>
+                    <p class="text-gray-700 mb-4">The grandest festival celebrating the victory of good over evil, featuring the famous Mysore Palace illumination and royal processions.</p>
+                    <div class="flex items-center text-purple-600">
+                        <span class="text-sm font-semibold">September - October</span>
+                    </div>
+                </div>
+
+                <!-- Karaga Festival -->
+                <div class="festival-card bg-gradient-to-br from-blue-100 to-indigo-100 rounded-xl p-6 shadow-lg">
+                    <div class="text-6xl mb-4 text-center">🏺</div>
+                    <h3 class="text-2xl font-bold text-blue-800 mb-3">Karaga Festival</h3>
+                    <p class="text-gray-700 mb-4">Ancient festival of Bangalore dedicated to Goddess Draupadi, featuring spectacular night processions and traditional rituals.</p>
+                    <div class="flex items-center text-blue-600">
+                        <span class="text-sm font-semibold">March - April</span>
+                    </div>
+                </div>
+
+                <!-- Ugadi -->
+                <div class="festival-card bg-gradient-to-br from-green-100 to-teal-100 rounded-xl p-6 shadow-lg">
+                    <div class="text-6xl mb-4 text-center">🌸</div>
+                    <h3 class="text-2xl font-bold text-green-800 mb-3">Ugadi</h3>
+                    <p class="text-gray-700 mb-4">New Year celebration marking new beginnings, celebrated with traditional foods, decorations, and family gatherings.</p>
+                    <div class="flex items-center text-green-600">
+                        <span class="text-sm font-semibold">March - April</span>
+                    </div>
+                </div>
+
+                <!-- Hampi Festival -->
+                <div class="festival-card bg-gradient-to-br from-yellow-100 to-orange-100 rounded-xl p-6 shadow-lg">
+                    <div class="text-6xl mb-4 text-center">🏛</div>
+                    <h3 class="text-2xl font-bold text-orange-800 mb-3">Hampi Festival</h3>
+                    <p class="text-gray-700 mb-4">Cultural extravaganza showcasing classical music, dance, and drama against the backdrop of ancient Vijayanagara ruins.</p>
+                    <div class="flex items-center text-orange-600">
+                        <span class="text-sm font-semibold">November</span>
+                    </div>
+                </div>
+
+                <!-- Kambala -->
+                <div class="festival-card bg-gradient-to-br from-red-100 to-pink-100 rounded-xl p-6 shadow-lg">
+                    <div class="text-6xl mb-4 text-center">🐃</div>
+                    <h3 class="text-2xl font-bold text-red-800 mb-3">Kambala</h3>
+                    <p class="text-gray-700 mb-4">Traditional buffalo racing festival of coastal Karnataka, showcasing the region's agricultural heritage and community spirit.</p>
+                    <div class="flex items-center text-red-600">
+                        <span class="text-sm font-semibold">November - March</span>
+                    </div>
+                </div>
+
+                <!-- Gowri Ganesha -->
+                <div class="festival-card bg-gradient-to-br from-indigo-100 to-purple-100 rounded-xl p-6 shadow-lg">
+                    <div class="text-6xl mb-4 text-center">🐘</div>
+                    <h3 class="text-2xl font-bold text-indigo-800 mb-3">Gowri Ganesha</h3>
+                    <p class="text-gray-700 mb-4">Beloved festival honoring Lord Ganesha and Goddess Gowri, celebrated with elaborate decorations and community festivities.</p>
+                    <div class="flex items-center text-indigo-600">
+                        <span class="text-sm font-semibold">August - September</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Culture Section -->
+    <section id="culture" class="py-20 bg-gradient-to-br from-orange-50 to-yellow-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4 slide-up">Cultural Heritage</h2>
+                <p class="text-xl text-gray-600 slide-up">Discover the diverse cultural tapestry of Karnataka</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="culture-item text-center p-6 bg-white rounded-xl shadow-lg">
+                    <div class="text-5xl mb-4">🎵</div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Classical Music</h3>
+                    <p class="text-gray-600">Carnatic music tradition with legendary composers like Purandara Dasa</p>
+                </div>
+                
+                <div class="culture-item text-center p-6 bg-white rounded-xl shadow-lg">
+                    <div class="text-5xl mb-4">💃</div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Classical Dance</h3>
+                    <p class="text-gray-600">Bharatanatyam, Kathak, and traditional folk dances like Dollu Kunitha</p>
+                </div>
+                
+                <div class="culture-item text-center p-6 bg-white rounded-xl shadow-lg">
+                    <div class="text-5xl mb-4">🎨</div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Arts & Crafts</h3>
+                    <p class="text-gray-600">Mysore silk, sandalwood carving, and intricate stone sculptures</p>
+                </div>
+                
+                <div class="culture-item text-center p-6 bg-white rounded-xl shadow-lg">
+                    <div class="text-5xl mb-4">🍛</div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Cuisine</h3>
+                    <p class="text-gray-600">Diverse flavors from Mysore Pak to coastal seafood delicacies</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- More Festivals Section -->
+    <section id="more-festivals" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4 slide-up">More Vibrant Festivals</h2>
+                <p class="text-xl text-gray-600 slide-up">Discover the endless celebrations across Karnataka</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Teej Festival -->
+                <div class="festival-card bg-gradient-to-br from-emerald-100 to-green-100 rounded-xl p-6 shadow-lg">
+                    <div class="text-6xl mb-4 text-center">🌿</div>
+                    <h3 class="text-2xl font-bold text-emerald-800 mb-3">Teej Festival</h3>
+                    <p class="text-gray-700 mb-4">Monsoon festival celebrated by women with traditional swings, folk songs, and prayers for marital bliss.</p>
+                    <div class="flex items-center text-emerald-600">
+                        <span class="text-sm font-semibold">July - August</span>
+                    </div>
+                </div>
+
+                <!-- Bhoota Kola -->
+                <div class="festival-card bg-gradient-to-br from-slate-100 to-gray-100 rounded-xl p-6 shadow-lg">
+                    <div class="text-6xl mb-4 text-center">👹</div>
+                    <h3 class="text-2xl font-bold text-slate-800 mb-3">Bhoota Kola</h3>
+                    <p class="text-gray-700 mb-4">Ancient spirit worship ritual of coastal Karnataka featuring elaborate costumes and traditional performances.</p>
+                    <div class="flex items-center text-slate-600">
+                        <span class="text-sm font-semibold">December - February</span>
+                    </div>
+                </div>
+
+                <!-- Makar Sankranti -->
+                <div class="festival-card bg-gradient-to-br from-sky-100 to-blue-100 rounded-xl p-6 shadow-lg">
+                    <div class="text-6xl mb-4 text-center">🪁</div>
+                    <h3 class="text-2xl font-bold text-sky-800 mb-3">Makar Sankranti</h3>
+                    <p class="text-gray-700 mb-4">Harvest festival celebrated with kite flying, sesame sweets, and prayers to the Sun God for prosperity.</p>
+                    <div class="flex items-center text-sky-600">
+                        <span class="text-sm font-semibold">January</span>
+                    </div>
+                </div>
+
+                <!-- Navaratri -->
+                <div class="festival-card bg-gradient-to-br from-rose-100 to-pink-100 rounded-xl p-6 shadow-lg">
+                    <div class="text-6xl mb-4 text-center">💃</div>
+                    <h3 class="text-2xl font-bold text-rose-800 mb-3">Navaratri</h3>
+                    <p class="text-gray-700 mb-4">Nine nights of devotion to Goddess Durga with classical dances, music, and colorful celebrations.</p>
+                    <div class="flex items-center text-rose-600">
+                        <span class="text-sm font-semibold">September - October</span>
+                    </div>
+                </div>
+
+                <!-- Pattadakal Dance Festival -->
+                <div class="festival-card bg-gradient-to-br from-amber-100 to-yellow-100 rounded-xl p-6 shadow-lg">
+                    <div class="text-6xl mb-4 text-center">🎭</div>
+                    <h3 class="text-2xl font-bold text-amber-800 mb-3">Pattadakal Festival</h3>
+                    <p class="text-gray-700 mb-4">Classical dance and music festival held at the historic Pattadakal temple complex showcasing Indian arts.</p>
+                    <div class="flex items-center text-amber-600">
+                        <span class="text-sm font-semibold">January - February</span>
+                    </div>
+                </div>
+
+                <!-- Kadalekai Parishe -->
+                <div class="festival-card bg-gradient-to-br from-orange-100 to-red-100 rounded-xl p-6 shadow-lg">
+                    <div class="text-6xl mb-4 text-center">🥜</div>
+                    <h3 class="text-2xl font-bold text-orange-800 mb-3">Kadalekai Parishe</h3>
+                    <p class="text-gray-700 mb-4">Groundnut festival in Bangalore celebrating the harvest with street vendors and traditional foods.</p>
+                    <div class="flex items-center text-orange-600">
+                        <span class="text-sm font-semibold">November - December</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="text-4xl mb-4 float">🕉</div>
+            <h3 class="text-2xl font-bold mb-4">Karnataka - Eternal Heritage</h3>
+            <p class="text-gray-300 mb-6">Experience the timeless beauty of Karnataka's festivals and culture</p>
+            <div class="flex justify-center space-x-6">
+                <span class="text-2xl cursor-pointer hover:text-orange-400 transition-colors">📧</span>
+                <span class="text-2xl cursor-pointer hover:text-orange-400 transition-colors">📱</span>
+                <span class="text-2xl cursor-pointer hover:text-orange-400 transition-colors">🌐</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling function
+        function scrollToSection(sectionId) {
+            document.getElementById(sectionId).scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+
+        // Add scroll animations
+        function animateOnScroll() {
+            const elements = document.querySelectorAll('.slide-up');
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('slide-up');
+                }
+            });
+        }
+
+        // Navigation smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Scroll event listener
+        window.addEventListener('scroll', animateOnScroll);
+        
+        // Initial animation check
+        animateOnScroll();
+
+        // Add hover effects to festival cards
+        document.querySelectorAll('.festival-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9738076966bd85d1',t:'MTc1NTkyNTA0NS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

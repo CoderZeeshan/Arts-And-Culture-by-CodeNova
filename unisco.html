@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karnataka Heritage Sites</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
+        
+        .font-display { font-family: 'Playfair Display', serif; }
+        .font-body { font-family: 'Inter', sans-serif; }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+            animation: gradientShift 8s ease-in-out infinite;
+        }
+        
+        @keyframes gradientShift {
+            0%, 100% { background: linear-gradient(135deg, #f97316 0%, #ea580c 100%); }
+            50% { background: linear-gradient(135deg, #ea580c 0%, #dc2626 100%); }
+        }
+        
+        .card-hover {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0;
+            transform: translateY(30px);
+            animation: slideInUp 0.6s ease-out forwards;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(249, 115, 22, 0.2);
+        }
+        
+        @keyframes slideInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .site-image {
+            background-size: cover;
+            background-position: center;
+            height: 200px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .site-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.6s ease;
+        }
+        
+        .card-hover:hover .site-image::before {
+            left: 100%;
+        }
+        
+        .stats-counter {
+            animation: countUp 2s ease-out;
+        }
+        
+        @keyframes countUp {
+            from { 
+                opacity: 0; 
+                transform: translateY(30px) scale(0.8);
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0) scale(1);
+            }
+        }
+        
+        .filter-btn {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .filter-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(249, 115, 22, 0.3), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .filter-btn:hover::before {
+            left: 100%;
+        }
+        
+        .filter-btn.active {
+            background: #f97316;
+            color: white;
+            transform: scale(1.05);
+        }
+        
+        .floating-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .pulse-animation {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        .fade-in-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            animation: fadeInLeft 1s ease-out forwards;
+        }
+        
+        @keyframes fadeInLeft {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        .fade-in-right {
+            opacity: 0;
+            transform: translateX(50px);
+            animation: fadeInRight 1s ease-out 0.3s forwards;
+        }
+        
+        @keyframes fadeInRight {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        .bounce-in {
+            animation: bounceIn 1s ease-out;
+        }
+        
+        @keyframes bounceIn {
+            0% { transform: scale(0.3); opacity: 0; }
+            50% { transform: scale(1.05); }
+            70% { transform: scale(0.9); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+    </style>
+</head>
+<body class="font-body bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <div class="text-2xl font-display font-bold text-orange-600">🕉 Karnataka Heritage</div>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="home.html" class="text-orange-600 hover:text-blue-600 px-3 py-2 font-medium transition-colors">Home</a>
+                        <a href="#sites" class="text-orange-600 hover:text-blue-600 px-3 py-2 font-medium transition-colors">Sites</a>
+                        <a href="#about" class="text-orange-600 hover:text-blue-600 px-3 py-2 font-medium transition-colors">About</a>
+                        <a href="contact.html" class="text-orange-600 hover:text-blue-600 px-3 py-2 font-medium transition-colors">Contact</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-gradient text-white py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="font-display text-5xl md:text-6xl font-bold mb-6 bounce-in">
+                Karnataka Heritage Sites
+            </h1>
+            <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto font-light fade-in-left">
+                Discover Karnataka's magnificent heritage - ancient temples, royal palaces, and cultural treasures that showcase the rich history of South India
+            </p>
+            <button onclick="scrollToSites()" class="bg-white text-orange-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 hover:scale-105 transition-all duration-300 shadow-lg pulse-animation">
+                Explore Sites
+            </button>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
+                <div class="stats-counter hover:scale-110 transition-transform duration-300">
+                    <div class="text-4xl font-bold text-orange-600 mb-2">500+</div>
+                    <div class="text-gray-600 font-medium">Heritage Sites</div>
+                </div>
+                <div class="stats-counter hover:scale-110 transition-transform duration-300" style="animation-delay: 0.2s;">
+                    <div class="text-4xl font-bold text-orange-500 mb-2">300+</div>
+                    <div class="text-gray-600 font-medium">Ancient Temples</div>
+                </div>
+                <div class="stats-counter hover:scale-110 transition-transform duration-300" style="animation-delay: 0.4s;">
+                    <div class="text-4xl font-bold text-orange-400 mb-2">50+</div>
+                    <div class="text-gray-600 font-medium">Royal Palaces</div>
+                </div>
+                <div class="stats-counter hover:scale-110 transition-transform duration-300" style="animation-delay: 0.6s;">
+                    <div class="text-4xl font-bold text-orange-700 mb-2">15</div>
+                    <div class="text-gray-600 font-medium">Districts</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Sites Section -->
+    <section id="sites" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="font-display text-4xl font-bold text-gray-800 mb-4">Featured Karnataka Heritage Sites</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                    Explore Karnataka's most magnificent temples, palaces, and historical monuments
+                </p>
+            </div>
+
+            <!-- Filter Buttons -->
+            <div class="flex justify-center mb-12">
+                <div class="bg-white rounded-full p-1 shadow-lg">
+                    <button onclick="filterSites('all')" class="filter-btn active px-6 py-2 rounded-full font-medium" data-filter="all">All Sites</button>
+                    <button onclick="filterSites('temple')" class="filter-btn px-6 py-2 rounded-full font-medium" data-filter="temple">Temples</button>
+                    <button onclick="filterSites('palace')" class="filter-btn px-6 py-2 rounded-full font-medium" data-filter="palace">Palaces</button>
+                    <button onclick="filterSites('fort')" class="filter-btn px-6 py-2 rounded-full font-medium" data-filter="fort">Forts</button>
+                </div>
+            </div>
+
+            <!-- Sites Grid -->
+            <div id="sitesGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Site cards will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="fade-in-left">
+                    <h2 class="font-display text-4xl font-bold text-orange-600 mb-6">About Karnataka Heritage</h2>
+                    <p class="text-lg text-gray-600 mb-6">
+                        Karnataka, known as the cultural capital of South India, boasts a rich heritage spanning over 2000 years. From the magnificent temples of Hampi to the royal palaces of Mysore, the state preserves architectural marvels from various dynasties.
+                    </p>
+                    <p class="text-lg text-gray-600 mb-8">
+                        These heritage sites showcase the artistic brilliance of the Chalukyas, Hoysalas, Vijayanagara Empire, and Tipu Sultan, representing Karnataka's diverse cultural legacy and architectural evolution through the centuries.
+                    </p>
+                    <div class="space-y-4">
+                        <div class="flex items-center">
+                            <div class="w-3 h-3 bg-blue-500 rounded-full mr-3"></div>
+                            <span class="text-gray-700">Ancient temple architecture and sculptures</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-3 h-3 bg-green-500 rounded-full mr-3"></div>
+                            <span class="text-gray-700">Royal palaces and historical monuments</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-3 h-3 bg-purple-500 rounded-full mr-3"></div>
+                            <span class="text-gray-700">Cultural traditions and heritage preservation</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-gradient-to-br from-orange-100 to-red-100 rounded-2xl p-8 text-center fade-in-right">
+                    <div class="text-6xl mb-4 floating-animation">🌍</div>
+                    <h3 class="font-display text-2xl font-bold text-orange-600 mb-4">Karnataka Heritage Network</h3>
+                    <p class="text-gray-600">
+                        Preserving Karnataka's magnificent cultural treasures and architectural wonders for future generations to explore and appreciate.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 hero-gradient text-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="font-display text-4xl font-bold mb-6">Get Involved</h2>
+            <p class="text-xl mb-8 max-w-2xl mx-auto">
+                Join the effort to protect and preserve Karnataka's magnificent cultural and architectural heritage
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-white bg-opacity-10 rounded-lg p-6 backdrop-blur-sm">
+                    <div class="text-3xl mb-4">📚</div>
+                    <h3 class="font-semibold text-lg mb-2">Learn More</h3>
+                    <p class="text-sm opacity-90">Discover the stories behind each heritage site</p>
+                </div>
+                <div class="bg-white bg-opacity-10 rounded-lg p-6 backdrop-blur-sm">
+                    <div class="text-3xl mb-4">🤝</div>
+                    <h3 class="font-semibold text-lg mb-2">Support</h3>
+                    <p class="text-sm opacity-90">Contribute to conservation efforts worldwide</p>
+                </div>
+                <div class="bg-white bg-opacity-10 rounded-lg p-6 backdrop-blur-sm">
+                    <div class="text-3xl mb-4">✈</div>
+                    <h3 class="font-semibold text-lg mb-2">Visit</h3>
+                    <p class="text-sm opacity-90">Plan your journey to these incredible destinations</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="col-span-2">
+                    <div class="text-2xl font-display font-bold mb-4 text-orange-400">🕉 Karnataka Heritage</div>
+                    <p class="text-gray-300 mb-4">
+                        Celebrating and protecting Karnataka's most significant cultural and architectural heritage sites for future generations.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-gray-300">
+                        <li><a href="#home" class="hover:text-white transition-colors">Home</a></li>
+                        <li><a href="#sites" class="hover:text-white transition-colors">Heritage Sites</a></li>
+                        <li><a href="#about" class="hover:text-white transition-colors">About UNESCO</a></li>
+                        <li><a href="#contact" class="hover:text-white transition-colors">Get Involved</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Resources</h4>
+                    <ul class="space-y-2 text-gray-300">
+                        <li><a href="#" class="hover:text-white transition-colors">Conservation</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Education</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Research</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">News</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 Karnataka Heritage Sites. Educational demonstration website.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Karnataka heritage sites data
+        const heritageSites = [
+            {
+                name: "Hampi",
+                district: "Ballari",
+                type: "temple",
+                year: "14th Century",
+                description: "Magnificent ruins of the Vijayanagara Empire, featuring stunning temples, royal complexes, and ancient bazaars carved from granite.",
+                gradient: "from-orange-400 to-red-500"
+            },
+            {
+                name: "Mysore Palace",
+                district: "Mysore",
+                type: "palace",
+                year: "1912",
+                description: "Indo-Saracenic architectural marvel, former residence of the Wadiyar dynasty, famous for its grandeur and Dasara celebrations.",
+                gradient: "from-purple-400 to-pink-500"
+            },
+            {
+                name: "Hoysaleswara Temple",
+                district: "Hassan",
+                type: "temple",
+                year: "12th Century",
+                description: "Masterpiece of Hoysala architecture in Halebidu, renowned for its intricate stone carvings and detailed sculptures.",
+                gradient: "from-blue-400 to-indigo-500"
+            },
+            {
+                name: "Gol Gumbaz",
+                district: "Vijayapura",
+                type: "fort",
+                year: "1656",
+                description: "Mausoleum of Sultan Muhammad Adil Shah, famous for its massive dome and remarkable acoustic properties.",
+                gradient: "from-green-400 to-teal-500"
+            },
+            {
+                name: "Chennakesava Temple",
+                district: "Hassan",
+                type: "temple",
+                year: "1117",
+                description: "Exquisite Hoysala temple in Belur, dedicated to Lord Vishnu, showcasing unparalleled craftsmanship in stone.",
+                gradient: "from-yellow-400 to-orange-500"
+            },
+            {
+                name: "Tipu Sultan's Summer Palace",
+                district: "Bengaluru",
+                type: "palace",
+                year: "1791",
+                description: "Elegant wooden palace of Tipu Sultan in Bangalore, known as 'Rashk-e-Jannat' or the envy of heaven.",
+                gradient: "from-red-400 to-pink-500"
+            },
+            {
+                name: "Badami Cave Temples",
+                district: "Bagalkot",
+                type: "temple",
+                year: "6th Century",
+                description: "Rock-cut cave temples of the Chalukya dynasty, featuring Hindu, Buddhist, and Jain sculptures.",
+                gradient: "from-indigo-400 to-purple-500"
+            },
+            {
+                name: "Chitradurga Fort",
+                district: "Chitradurga",
+                type: "fort",
+                year: "17th Century",
+                description: "Massive hill fort known as Kallina Kote, famous for its seven concentric walls and heroic tales.",
+                gradient: "from-gray-400 to-blue-500"
+            },
+            {
+                name: "Pattadakal Temples",
+                district: "Bagalkot",
+                type: "temple",
+                year: "8th Century",
+                description: "UNESCO World Heritage site showcasing the evolution of Chalukyan architecture and temple building.",
+                gradient: "from-teal-400 to-green-500"
+            }
+        ];
+
+        let currentFilter = 'all';
+
+        function renderSites(sites) {
+            const grid = document.getElementById('sitesGrid');
+            grid.innerHTML = sites.map((site, index) => `
+                <div class="site-card bg-white rounded-xl shadow-lg overflow-hidden card-hover" data-type="${site.type}" style="animation-delay: ${index * 0.1}s;">
+                    <div class="site-image bg-gradient-to-br ${site.gradient} flex items-center justify-center">
+                        <div class="text-white text-center p-6">
+                                                <div class="text-4xl mb-2">🏛</div>
+                                                <div class="font-display text-xl font-bold mb-1">${site.name}</div>
+                                                <div class="text-sm text-white opacity-80 mb-2">${site.district} &middot; ${site.year}</div>
+                                            </div>
+                                        </div>
+                                        <div class="p-6">
+                                            <div class="text-gray-700 mb-4">${site.description}</div>
+                                            <span class="inline-block bg-orange-100 text-orange-600 px-3 py-1 rounded-full text-xs font-semibold">${site.type.charAt(0).toUpperCase() + site.type.slice(1)}</span>
+                                        </div>
+                                    </div>
+                                `).join('');
+                            }
